@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" />
     <resourceExtensions />
@@ -164,3 +165,13 @@
     </states>
   </component>
 </project>
+=======
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
+
+>>>>>>> 847ed0674554a93b65970570b6b80824fc7f0882

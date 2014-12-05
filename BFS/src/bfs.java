@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+<<<<<<< HEAD
 import java.lang.String;
 
 
@@ -9,6 +10,10 @@ import java.lang.String;
  */
 public class bfs {
 
+=======
+
+public class bfs {
+>>>>>>> 847ed0674554a93b65970570b6b80824fc7f0882
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         PrintWriter out = new PrintWriter(System.out);
@@ -19,6 +24,7 @@ public class bfs {
 
         List<Integer> [] graph = new List[n];
 
+<<<<<<< HEAD
         for (int i=0; i<n;i++){
             graph[i] = new ArrayList<Integer>();
 
@@ -28,10 +34,23 @@ public class bfs {
             String [] lo = br.readLine().split(" ");
             int a = Integer.valueOf(lo[0]);
             int b = Integer.valueOf(lo[b]);
+=======
+        for(int i=0;i<n;i++){
+            graph[i] = new ArrayList<Integer>();
+        }
+
+        // add edges
+
+        for(int i=0;i<m;i++) {
+            String [] lo = br.readLine().split(" ");
+            int a = Integer.valueOf(lo[0]);
+            int b = Integer.valueOf(lo[1]);
+>>>>>>> 847ed0674554a93b65970570b6b80824fc7f0882
 
             graph[a].add(b);
             graph[b].add(a);
 
+<<<<<<< HEAD
 
 
         }
@@ -40,6 +59,45 @@ public class bfs {
         boolean []  visited = new boolean[n];
 
         for (int i=0;  )
+=======
+        }
+        //added edges
+
+        boolean [] visited = new boolean[n];
+
+        for(int i=0; i < visited.length; i++){
+            visited[i] = false;
+        }
+
+        // Create a queue for bfs
+
+        Queue<Integer> queue = new LinkedList<Integer>();
+
+        // Mark the current node as visited and queue it
+        System.out.println("Enter the node from which you want to traverse");
+        int s = Integer.parseInt(br.readLine());
+
+        visited[s] = true;
+        queue.add(s);
+
+
+        while(!queue.isEmpty()) {
+
+            s = queue.remove();
+            System.out.print(s + " ");
+
+           // If adjacent has not been visited , then mark it visited and queue it
+
+            for(int i=0;i< graph[s].size();i++){
+               int p = graph[s].get(i);
+               if (!visited[p]){
+                   visited[p] = true;
+                   queue.add(p);
+               }
+            }
+
+        }
+>>>>>>> 847ed0674554a93b65970570b6b80824fc7f0882
 
 
 
@@ -47,4 +105,8 @@ public class bfs {
 
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 847ed0674554a93b65970570b6b80824fc7f0882
