@@ -80,11 +80,7 @@ public class MergeSort {
 
 
         MergeSortUtil(0,n-1);
-        /*
-        for(int i: array){
-            System.out.println(i+" ");
-        }
-        */
+
 
 
     }
