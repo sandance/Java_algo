@@ -104,7 +104,7 @@ public class LCS_Correct_Way {
             System.out.println();
         }
          */
-        display_lcs(str1,str2,m,n,L);
+        //display_lcs(str1,str2,m,n,L);
         return L[0][0];
     }
 
