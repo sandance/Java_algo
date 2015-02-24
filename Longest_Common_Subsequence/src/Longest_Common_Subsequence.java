@@ -47,7 +47,17 @@ public class Longest_Common_Subsequence {
             }
         }
     }
+/*
+    public static void display(int [][] dp, int m,int n){
+        for(int i=0;i<=m;i++){
+            for(int j=0;j<=n;j++){
 
+                System.out.print(dp[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+*/
 
     public static int lcs(String str1 , String str2 , int m, int n){
         // Memorization
@@ -67,10 +77,27 @@ public class Longest_Common_Subsequence {
             }
         }
         // L[m][n] contains length of LCS for X[0..n-1] and Y [0..m-1]
-
+        display_lcs(str1,str2,m,n,L);
         return L[m][n];
 
     }
+    public static void display_lcs(String x, String y, int m, int n, int [][] opt){
+        int i=0,j=0;
+
+        while(i< m && j <n){
+            if (x.charAt(i) == y.charAt(j)) {
+                System.out.print(x.charAt(i));
+                i++;
+                j++;
+            }else if (opt[i+1][j] >= opt[i][j+1]){
+                i++;
+            }else
+                j++;
+
+        }
+        System.out.println();
+    }
+
 
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner();

@@ -56,6 +56,7 @@ public class LCS_Correct_Way {
      * @param n
      * @param opt
      */
+
     public static void display_lcs(String x, String y, int m, int n, int [][] opt){
         int i=0,j=0;
 
@@ -72,6 +73,8 @@ public class LCS_Correct_Way {
         }
         System.out.println();
     }
+
+
 
 
     /**
@@ -104,7 +107,7 @@ public class LCS_Correct_Way {
             System.out.println();
         }
          */
-        //display_lcs(str1,str2,m,n,L);
+        display_lcs(str1,str2,m,n,L);
         return L[0][0];
     }
 

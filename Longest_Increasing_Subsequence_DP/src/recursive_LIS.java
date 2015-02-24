@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.math.BigInteger;
 
 
 /**
@@ -54,33 +55,35 @@ public class recursive_LIS {
         }
     } // end of Scanner
 
-    int lis_memo(int [] arr, int n, int max){
-        /* Base Case */
-
-        if(n==1)
-            return 1;
-
-        int res,max_ending_here = 1;
-
-        /* Recursively get length of  all LIS ending with arr[n - 1]
-         */
-
-        for(int i=0;i)
-
-    }
 
     /**
      *
      * @param arr
      * @param n
-     * @return maximum length of lis
+     * @return maximum length of LIS
      */
-    int lis(int [] arr, int n){
-         int max = 1;
+    public static long lis_dp(int [] arr, int n){
+        int [] dp = new int [n];
 
-        max = lis_memo(arr,n,max);
+        /* Initialize LIS values for all indices */
+        for(int i=0; i<n;i++)
+            dp[i] = 1;
 
-        return max;
+        /* Compute Optimized version of LIS in bottom up manner */
+
+        for(int i=1;i<n;i++){
+            for(int j=0;j<i;j++){
+                if(arr[i] > arr[j] && dp[i] < dp[j] + 1 )
+                    dp[i] = dp[i] +1;
+            }
+        }
+
+        /* PICK Maximum of all LIS values */
+
+        Arrays.sort(dp);
+       return dp[n-1];
+
+
     }
 
 
@@ -90,15 +93,18 @@ public class recursive_LIS {
         Scanner in = new Scanner();
         PrintWriter out = new PrintWriter(System.out);
 
-        System.out.println("Enter total number of elements\n");
+        //System.out.println("Enter total number of elements\n");
         int n = in.nextInt();
 
 
-        int [] arr = new int [n];
+       long [] arr = new long[n];
+        for(int i=0;i<n;i++){
+            arr[i] = in.nextLong();
+        }
 
-        int lis_length = lis(arr,n);
+        long lis_length = lis_dp(arr,n);
 
-        System.out.println("Length of Lis is : " + lis_length);
+        System.out.println(lis_length);
 
 
 
