@@ -84,7 +84,7 @@ public class cycle_detection {
 
     public static boolean isCyclic(List<Integer> [] graph, int V, int E) {
         boolean[] visited = new boolean[V];
-        boolean[] recStack = new boolean[E];
+        boolean[] recStack = new boolean[V];
 
         for (int i = 0; i < V; i++) {
             visited[i] = false;
