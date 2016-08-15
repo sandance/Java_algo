@@ -3,30 +3,20 @@ import java.util.*;
 
 
 
-
-
-
 public class Union_find {
 
     public static int n,m;
 
-    public static void createGraph(int V, int E, Scanner in) {
+    public static void createGraph(int V, int E, Graph graph) {
+         Scanner in = new Scanner();
 
-        Graph graph = new Graph();
-        graph.V = V;
-        graph.E = E;
+        for (int j=0;j<graph.E;j++){
+            System.out.println("Enter edges for vextex: " + j);
+            int a = in.nextInt();
+            int b = in.nextInt();
 
-        Graph [] edge = new Graph[E];
-
-
-            for (int j=0;j<graph.E;j++){
-                int a = in.nextInt();
-                int b = in.nextInt();
-
-
-
-                graph.edge[a].src=a;
-                graph.edge[a].dest=b;
+            graph.edge[a].src=a;
+            graph.edge[a].dest=b;
 
 
         } // graph is created
@@ -43,15 +33,21 @@ public class Union_find {
 
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner();
         PrintWriter out = new PrintWriter(System.out);
 
         n = in.nextInt();
         m = in.nextInt();
+        Graph graph = new Graph(n,m);
 
-        createGraph (n,m,in);
+        createGraph (n,m,graph);
+        // check cycle
 
-
+        if (graph.isCycle(graph) == 1){
+            System.out.println("Graph contains cycle");
+        }else{
+            System.out.println("Graph does not contain cycle");
+        }
 
     }
 
