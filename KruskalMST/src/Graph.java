@@ -1,5 +1,5 @@
 /**
- * Created by NIslam on 8/14/16.
+ * Created by NIslam on 8/17/16.
  */
 
 import java.util.*;
@@ -42,8 +42,8 @@ public class Graph {
             subsets[xroot].parent = yroot;
         else if (subsets[xroot].rank > subsets[yroot].rank)
             subsets[yroot].parent = xroot;
-        // if the ranks are same , then make one as root
-        // and increment its root by one
+            // if the ranks are same , then make one as root
+            // and increment its root by one
         else {
             subsets[yroot].parent = xroot;
             subsets[xroot].rank++;
@@ -54,39 +54,58 @@ public class Graph {
     // The main function to check whether a given graph contains
     // a cycle or not
 
-    int isCycle(Graph graph){
+    public void kruskal(Graph graph) {
         // Allocating memory for creating V subsets
-        subset [] subsets = new subset[graph.V];
-        for (int i=0;i<graph.V; i++)
+        Edge[] result = new Edge[graph.V];
+        for (int i=0;i< graph.V;i++){
+            result[i] = new Edge();
+        }
+        // sort the edges
+        Arrays.sort(graph.edge);
+
+        // allocate memory to create V subsets
+        subset[] subsets = new subset[graph.V];
+        for (int i = 0; i < graph.V; i++)
             subsets[i] = new subset();
         //List<subset> [] subsets = new List[graph.V];
 
         // Initialize all subsets as single element sets
-        for(int i=0; i< graph.V; i++){
+        for (int i = 0; i < graph.V; i++) {
 
-            System.out.println("vextex: "+i);
+            //System.out.println("vextex: " + i);
             subsets[i].parent = i;
             subsets[i].rank = 0;
 
         }
 
-        // Iterate through all edges of graph
-        // find subsets of vertices for every edge
-        // if both subsets are same, there is a cycle in Graph
+        int noEdge = 0, counter = 0;
 
-        for(int i=0; i < graph.E; i++){
-            int x = graph.find(subsets, graph.edge[i].src);
-            int y = graph.find(subsets, graph.edge[i].dest);
 
-            if(x==y){
-                return 1;
+        // number of edges has to be V - 1
+        while (noEdge < graph.V ) {
+            // step 2 : pick the smallest edge
+            Edge nextEdge = graph.edge[noEdge++];
+            System.out.println("source of edge: "+nextEdge.src+" end of edge:"+ nextEdge.dest);
+
+
+            int x = find(subsets, nextEdge.src);
+            int y = find(subsets, nextEdge.dest);
+
+            // if including this edge does not cause cycle
+            // increment the index
+            if (x != y) {
+                result[counter++] = nextEdge;
+                Union(subsets, x, y);
             }
-            graph.Union(subsets, x, y);
+            // else discard the next edge if they are the same
         }
-        return 0;
+
+        System.out.println("Following are the edges of MST");
+        for(int i=0; i< counter ; i++){
+            System.out.println(result[i].src+"---"+result[i].dest+"----"+result[i].weight);
+        }
+
 
     }
-
-
 
 }
