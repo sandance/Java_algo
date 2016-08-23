@@ -49,7 +49,7 @@ public class Graph {
         from src to any other vertex can have at most [V] -1 edges
         */
 
-        for(int i=0;i<V;i++){
+        for(int i=1;i<V;i++){
             for(int j=0;j<E;j++){
                 int u = graph.edge[j].src;
                 int v = graph.edge[j].dest;
@@ -57,7 +57,7 @@ public class Graph {
 
 
                 if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]){
-                    dist[v] = dist[u] = weight;
+                    dist[v] = dist[u] + weight;
                 }
 
             }
@@ -71,6 +71,8 @@ public class Graph {
 
          */
 
+        printArr(dist);
+
         for(int j=0;j<E;j++){
             int u = graph.edge[j].src;
             int v = graph.edge[j].dest;
@@ -81,8 +83,6 @@ public class Graph {
                 System.out.println("The Graph contains negative weight cycle");
             }
         }
-
-
 
     }
 
