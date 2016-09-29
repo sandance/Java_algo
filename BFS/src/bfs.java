@@ -17,7 +17,7 @@ public class bfs {
 
         while (!queue.isEmpty()){
             s = queue.poll();
-            System.out.println(s);
+            //System.out.println(s);
 
 
             // Get all the adjacent vertices
