@@ -18,10 +18,10 @@ public class Heap {
     }
 
 
-    public boolean insert(int key){
+    public boolean insert(int key, char data, Node left, Node right){
         if(currentSize == maxSize)
             return false;
-        Node newNode = new Node(key);
+        Node newNode = new Node(key,data, left, right);
         heapArray[currentSize] = newNode;
         // Insertion so, you need to tickleup
         tickleup(currentSize++);
@@ -34,7 +34,7 @@ public class Heap {
 
         Node bottom = heapArray[index];
 
-        while(index >0 && heapArray[parent].getKey() < bottom.getKey()){
+        while(index >0 && heapArray[parent].getFreq() < bottom.getFreq()){
             heapArray[index] = heapArray[parent]; // move node down
             index = parent;
             parent = (parent -1) /2;            // parent to its parent
@@ -65,14 +65,14 @@ public class Heap {
             int leftChild = 2* index +1;
             int rightChild = 2* index +2;
 
-            if ( rightChild < currentSize && heapArray[rightChild].getKey() > heapArray[leftChild].getKey() ){
+            if ( rightChild < currentSize && heapArray[rightChild].getFreq() > heapArray[leftChild].getFreq() ){
                 largerChild = rightChild;
 
             }
             else
                 largerChild = leftChild;
 
-            if (top.getKey() >= heapArray[largerChild].getKey()){
+            if (top.getFreq() >= heapArray[largerChild].getFreq()){
                 break;
             }
 
@@ -85,8 +85,8 @@ public class Heap {
     public boolean change (int index, int newValue){
         if ( index <  0 || index >= currentSize)
             return false;
-        int oldValue = heapArray[index].getKey();
-        heapArray[index].setKey(newValue);
+        int oldValue = heapArray[index].getFreq();
+        heapArray[index].setFreq(newValue);
 
         if (oldValue < newValue) {
             // if raised
@@ -104,7 +104,7 @@ public class Heap {
         System.out.println("*************");
 
         for(int i=0;i<maxSize;i++){
-                System.out.println(heapArray[i].getKey() + " ");
+                System.out.println(heapArray[i].getFreq() + " ");
             System.out.println();
 
         }
@@ -121,56 +121,13 @@ public class Heap {
         heapArray[index] = newNode;
     }
 
-    public void incrementSize(){
+    public void incrementSize()
+    {
         currentSize++;
     }
-
-
-
-
-
-
-    public static void main(String[] args) throws IOException {
-        Scanner in = new Scanner();
-        PrintWriter out = new PrintWriter(System.out);
-
-        System.out.println("Enter size of the Heap");
-        int size = in.nextInt();
-
-        Heap heap = new Heap(size);
-        boolean success;
-
-        System.out.println("Enter elements into heap");
-        for(int i=0;i<size;i++){
-            int key = in.nextInt();
-            Node newNode = new Node(key);
-
-            heap.insertAt(i,newNode);
-            heap.incrementSize();
-
-        }
-
-
-        System.out.println("Display Heap: ");
-        heap.displayHeap();
-
-        // make random array into heap
-
-        for( int j=size/2 -1 ; j >= 0; j--)
-            heap.tickledown(j);
-
-        System.out.println("Display Heap Again: ");
-        heap.displayHeap();
-
-
-        for(int i=size - 1; i >= 0 ; i--){
-            // remove from heap and store at array end
-            Node biggestNode = heap.remove();
-            heap.insertAt(i,biggestNode);
-        }
-
-        System.out.println("Sorted: ");
-        heap.displayHeap();
-    }
+    /*
+    public boolean isEmpty(){
+        return currentSize == 0;
+    }*/
 
 }

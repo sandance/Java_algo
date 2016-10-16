@@ -134,6 +134,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Heap" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -557,12 +558,12 @@
       <created>1475041344011</created>
       <option name="number" value="Default" />
       <updated>1475041344011</updated>
-      <workItem from="1475041350718" duration="4361000" />
+      <workItem from="1475041350718" duration="4453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4361000" />
+    <option name="totallyTimeSpent" value="4453000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="426" y="114" width="1280" height="533" extended-state="0" />
