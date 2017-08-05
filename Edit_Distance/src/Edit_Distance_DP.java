@@ -52,14 +52,18 @@ public class Edit_Distance_DP {
         int m = strA.length();
         int n = strB.length();
 
-
+        // Create a table to store results of subproblems
         int[][] dp = new int[m + 1][n + 1];
 
+        // Fill up dp[][] in bottom up manner
 
+        // If first string is empty, the only option is to insert
+        // all elements of second string
         for (int i = 0; i <= m; i++) {
             dp[i][0] = i;
         }
 
+        // if second string is empty , remove all elements
         for (int j = 0; j <= n; j++) {
             dp[0][j] = j;
         }
