@@ -95,13 +95,13 @@ public class knapSack_DP {
         Scanner in = new Scanner();
         PrintWriter out = new PrintWriter(System.out);
 
-        int [] val = {10,40,30,50};
-        int [] wt = {5,4,6,3};
+        //int [] val = {10,40,30,50};
+        //int [] wt = {5,4,6,3};
 
-        //int [] val = {5,40,30,50};
-        //int [] wt = {1,6,9};
+        int [] val = {10,20,30};
+        int [] wt = {1,1,1};
 
-        int W = 10;
+        int W = 2;
 
 
         int max = knapSack_DP(W,wt,val,wt.length);
