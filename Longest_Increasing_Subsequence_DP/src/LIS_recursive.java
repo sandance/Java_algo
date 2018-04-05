@@ -1,15 +1,13 @@
-import java.io.*;
-import java.util.*;
-import java.math.BigInteger;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.StringTokenizer;
 
 /**
- * Longest Increasing Sequence
- * For example, length of LIS for { 10, 22, 9, 33, 21, 50, 41, 60, 80 } is 6 and LIS is {10, 22, 33, 50, 60, 80}
- *
+ * Created by NIslam on 10/15/17.
  */
-public class recursive_LIS {
-
+public class LIS_recursive {
     public static class Scanner {
         BufferedReader br;
         StringTokenizer st;
@@ -56,38 +54,31 @@ public class recursive_LIS {
     } // end of Scanner
 
 
-    /**
-     *
-     * @param arr
-     * @param n
-     * @return maximum length of LIS
-     */
-    public static long lis_dp(int [] arr, int n){
-        int [] dp = new int [n];
+    public static int lis_recursive(int [] arr, int n){
 
-        /* Initialize LIS values for all indices */
-        for(int i=0; i<n;i++)
-            dp[i] = 1;
+        // base case
+        if (n == 1)
+            return 1;
 
-        /* Compute Optimized version of LIS in bottom up manner */
+        int max_longest_number = 1;
 
-        for(int i=1;i<n;i++){
-            for(int j=0;j<i;j++){
-                if(arr[i] > arr[j] && dp[i] < dp[j] + 1 )
-                    dp[i] = dp[i] +1;
+        // find lis of subproblems
+
+        for (int i=1 ; i <n; i++){
+
+            int temp_lis = lis_recursive(arr,i);
+
+            if ((arr[i-1] < arr [n -1]) && (temp_lis + 1 > max_longest_number)){
+                max_longest_number = 1 + temp_lis;
+
+
             }
+
         }
 
-        /* PICK Maximum of all LIS values */
-
-        Arrays.sort(dp);
-       return dp[n-1];
-
+        return max_longest_number;
 
     }
-
-
-
 
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner();
@@ -97,12 +88,12 @@ public class recursive_LIS {
         int n = in.nextInt();
 
 
-       long [] arr = new long[n];
+        int [] arr = new int[n];
         for(int i=0;i<n;i++){
-            arr[i] = in.nextLong();
+            arr[i] = in.nextInt();
         }
 
-        long lis_length = lis_dp(arr,n);
+        long lis_length = lis_recursive(arr,n);
 
         System.out.println(lis_length);
 
