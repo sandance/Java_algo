@@ -2,6 +2,12 @@ import java.awt.datatransfer.SystemFlavorMap;
 import java.io.*;
 import java.util.*;
 
+
+/**
+ *
+ *
+ * https://www.youtube.com/watch?v=_nCsPn7_OgI
+ */
 public class Longest_Palindrome_Sequence {
 
     public static class Scanner {
@@ -103,6 +109,7 @@ public class Longest_Palindrome_Sequence {
             for(i=0;i < n - cl; i++){
                 j = i + cl;
 
+                System.out.println("i:  "+ i + " and "+ str.charAt(i) + " j: "+ j +" and "+ str.charAt(j));
                 if(str.charAt(i) ==str.charAt(j) && cl==1){
                     dp[i][j] = 2;
                 }
