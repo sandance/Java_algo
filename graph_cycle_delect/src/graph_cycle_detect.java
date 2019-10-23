@@ -7,24 +7,24 @@ public class graph_cycle_detect {
     public static boolean isCyclicUtil(int v, boolean [] visited, boolean [] recStack, List<Integer> [] graph) {
 
         // Mark the current node as visited and mark it
+        if (visited[v] == false) {
+            visited[v] = true;
+            recStack[v] = true;
 
-        visited[v] = true;
-        recStack[v] = true;
+            //System.out.print(v +" ");
 
-        //System.out.print(v +" ");
+            // Recur for all vertices adjacent to this vertex
 
-        // Recur for all vertices adjacent to this vertex
-
-        for(int i=0; i < graph[v].size();i++){
-            int p = graph[v].get(i);
-            //System.out.println("The adjacent vertix " + p);
-            if(!visited[p] && isCyclicUtil(p,visited,recStack,graph)) {
-                return true;
+            for(int i=0; i < graph[v].size();i++){
+                int p = graph[v].get(i);
+                //System.out.println("The adjacent vertix " + p);
+                if(!visited[p] && isCyclicUtil(p,visited,recStack,graph)) {
+                    return true;
                 //DFSUtil(p,visited,recStack,graph);
-            }
-            else if(recStack[p])
-                return true;
-        }
+                }
+                else if(recStack[p])
+                    return true;
+         }
 
         recStack[v] = false; // remove the vertex from recursion stack
         return false;
